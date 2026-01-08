@@ -1,0 +1,869 @@
+{
+  "metadata": {
+    "generated_at": "2026-01-08T22:00:28.616563Z",
+    "month": "2025-10",
+    "source": "user_list",
+    "phishing_enriched_at": "2026-01-08T22:00:33.847145Z",
+    "darkweb_enriched_at": "2026-01-08T22:00:34.957290Z"
+  },
+  "users": {
+    "jjones@alteradevco.com": {
+      "name": "Jerusha Jones",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "privenbark@alteradevco.com": {
+      "name": "Paul Rivenbark",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "copier@alteradevco.com": {
+      "name": "Cannon Copier",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "dmcdonald@alteradevco.com": {
+      "name": "David McDonald",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "ddenieunkerk@alteradevco.com": {
+      "name": "Dena De\nNieunkerk",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "etillman@alteradevco.com": {
+      "name": "Eddie Tillman",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "eperez@alteradevco.com": {
+      "name": "Emilio Perez",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "jrunge@alteradevco.com": {
+      "name": "Joanne Runge",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "kroberts@alteradevco.com": {
+      "name": "Kevin Roberts",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "lgascoyne@alteradevco.com": {
+      "name": "Lina Gascoyne",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "office.manager@alteradevco.com": {
+      "name": "Office Manager",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "pquinn@alteradevco.com": {
+      "name": "Parker Quinn",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "rwills@alteradevco.com": {
+      "name": "Rhonda Wills",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "smalkasian@alteradevco.com": {
+      "name": "Stacy Malkasian",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "technagy@alteradevco.com": {
+      "name": "Technagy",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": false,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "tq@alteradevco.com": {
+      "name": "Terry Quinn",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "abonilla@alteradevco.com": {
+      "name": "Angelica Bonilla",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "ealeman@alteradevco.com": {
+      "name": "Enrique Aleman",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "kallen@alteradevco.com": {
+      "name": "Kimberly Allen",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "jwatkins@alteradevco.com": {
+      "name": "Jim Watkins",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "kwinant@alteradevco.com": {
+      "name": "Katrina Winant",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "ttillman@alteradevco.com": {
+      "name": "Trace Tillman",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "ttaylor@alteradevco.com": {
+      "name": "Trent Taylor",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "ardunez@alteradevco.com": {
+      "name": "Arturo Ordunez",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "cbrooks@alteradevco.com": {
+      "name": "Caleb Brooks",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "irios@alteradevco.com": {
+      "name": "Iskandar Rios",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "jmcstay@alteradevco.com": {
+      "name": "Judge McStay",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "dalcantar@alteradevco.com": {
+      "name": "Dina Alcantar",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "kfisher@alteradevco.com": {
+      "name": "Kristi Fisher",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "mkennedy@alteradevco.com": {
+      "name": "Mike Kennedy",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "hr@alteradevco.com": {
+      "name": "HR",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "dliland@alteradevco.com": {
+      "name": "Davidson Liland",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "jgarza@alteradevco.com": {
+      "name": "John Garza",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "hharing@alteradevco.com": {
+      "name": "Howard Haring",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "rmartinez@alteradevco.com": {
+      "name": "Raymond Martinez",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "rstark@alteradevco.com": {
+      "name": "Ralph Stark",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "rcurlee@alteradevco.com": {
+      "name": "Rodney Curlee",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "demery@alteradevco.com": {
+      "name": "Dalton Emery",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    },
+    "kdevinney@alteradevco.com": {
+      "name": "Kody Devinney",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-10",
+      "services": {
+        "m365": true,
+        "edr": false,
+        "backup": false,
+        "phishing_training": false,
+        "dark_web_monitoring": false
+      },
+      "risk_signals": {
+        "phishing_clicked": false,
+        "dark_web_exposed": false,
+        "edr_incidents": 0,
+        "phishing_campaigns": 0,
+        "phishing_failures": 0,
+        "phishing_risk": "unknown",
+        "dark_web_severity": "none"
+      }
+    }
+  }
+}

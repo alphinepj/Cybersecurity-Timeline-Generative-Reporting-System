@@ -1,0 +1,47 @@
+{
+  "summary_metrics": {
+    "total_users": 39,
+    "total_assets": 29,
+    "user_change": 0,
+    "asset_change": 0
+  },
+  "identity_insights": [],
+  "asset_insights": [],
+  "security_risks": [
+    "Asset AFA-LT-0F003DS does not have backups configured.",
+    "Asset AFA-LT-0F3473R2 does not have backups configured.",
+    "Asset AFA-LT-0F3474C2 does not have backups configured.",
+    "Asset AFA-LT-0F3478F2 does not have backups configured.",
+    "Asset AFA-LT-0F34CVY2 does not have backups configured.",
+    "Asset AFA-LT-0F34CY42 does not have backups configured.",
+    "Asset AFA-LT-0F36JB62 does not have backups configured.",
+    "Asset AFA-LT-0F36KFB2 does not have backups configured.",
+    "Asset AFA-LT-0F36KHP2 does not have backups configured.",
+    "Asset AFA-LT-0F36KJ92 does not have backups configured.",
+    "Asset AFA-LT-0F36KMJ2 does not have backups configured.",
+    "Asset AFA-LT-0F36KPM2 does not have backups configured.",
+    "Asset AFA-LT-0F37DBM does not have backups configured.",
+    "Asset AFA-LT-0F3BF8F2 does not have backups configured.",
+    "Asset AFA-LT-PF3HYVET does not have backups configured.",
+    "Asset AFA-SUR-0F38W3 does not have backups configured.",
+    "Asset ALTERA does not have backups configured.",
+    "Asset ALTERA does not have backups configured.",
+    "Asset CURLEE does not have backups configured.",
+    "Asset DESKTOP-PONAI23 does not have backups configured.",
+    "Asset DESKTOP-UVR270R does not have backups configured.",
+    "Asset EDDIESURFACE9 does not have backups configured.",
+    "Asset LT-ALT-MR does not have backups configured.",
+    "Asset RIVENBANK does not have backups configured.",
+    "Asset STEPHAN-SURFACE does not have backups configured.",
+    "Asset TQ-SURFACE does not have backups configured.",
+    "Asset WO183652741 does not have backups configured.",
+    "Asset WO183755927 does not have backups configured.",
+    "Asset WO183755930 does not have backups configured."
+  ],
+  "positive_findings": [
+    "No users failed phishing simulations this period.",
+    "All monitored devices have healthy backup status.",
+    "No high-severity EDR incidents were detected."
+  ],
+  "trend_indicators": []
+}
