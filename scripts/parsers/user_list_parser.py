@@ -3,17 +3,64 @@ User List Parser
 ----------------
 Parses User List reports (PDF / XLSX) into canonical JSON user objects.
 
-Author: Cyber Timeline System
 Phase: 1 (DB-less)
 """
 
 import json
 import os
 from datetime import datetime
-from typing import Dict
+from typing import Dict, List
 
 import pandas as pd
 import pdfplumber
+
+
+# =========================
+# Column Synonyms
+# =========================
+
+EMAIL_COLUMNS = [
+    "email",
+    "email address",
+    "user principal name",
+    "upn",
+    "login",
+    "login name",
+    "username"
+]
+
+FIRST_NAME_COLUMNS = [
+    "first name",
+    "firstname",
+    "given name"
+]
+
+LAST_NAME_COLUMNS = [
+    "last name",
+    "lastname",
+    "surname"
+]
+
+NAME_COLUMNS = [
+    "name",
+    "full name",
+    "display name"
+]
+
+STATUS_COLUMNS = [
+    "status",
+    "account status",
+    "enabled",
+    "active",
+    "sign-in allowed"
+]
+
+PRODUCT_COLUMNS = [
+    "microsoft 365 assigned products",
+    "assigned products",
+    "licenses",
+    "products"
+]
 
 
 # =========================
@@ -26,22 +73,59 @@ def normalize_email(email: str) -> str:
     return email.strip().lower()
 
 
+def normalize_col(col) -> str:
+    if not col:
+        return ""
+    return str(col).lower().strip()
+
+
 def month_to_str(month: str) -> str:
-    """
-    Ensures month format YYYY-MM
-    """
-    try:
-        datetime.strptime(month, "%Y-%m")
-        return month
-    except ValueError:
-        raise ValueError("Month must be in YYYY-MM format")
+    datetime.strptime(month, "%Y-%m")
+    return month
 
 
 def load_previous_snapshot(path: str) -> Dict:
-    if not os.path.exists(path):
+    if not path or not os.path.exists(path):
         return {}
-    with open(path, "r") as f:
+    with open(path, "r", encoding="utf-8") as f:
         return json.load(f).get("users", {})
+
+
+def find_column(df: pd.DataFrame, candidates: List[str]):
+    for col in df.columns:
+        if normalize_col(col) in candidates:
+            return col
+    return None
+
+
+# =========================
+# User Builder
+# =========================
+
+def build_user(email, name, status_raw, products_raw, month):
+    status_raw = (status_raw or "").lower()
+
+    return {
+        "name": name or email.split("@")[0],
+        "status": "active" if status_raw in ("yes", "true", "enabled", "active", "1") else "inactive",
+        "first_seen": None,
+        "last_seen": month,
+        "services": {
+            "m365": any(
+                k in (products_raw or "").lower()
+                for k in ("office 365", "microsoft 365", "m365")
+            ),
+            "edr": False,
+            "backup": False,
+            "phishing_training": False,
+            "dark_web_monitoring": False
+        },
+        "risk_signals": {
+            "phishing_clicked": False,
+            "dark_web_exposed": False,
+            "edr_incidents": 0
+        }
+    }
 
 
 # =========================
@@ -50,42 +134,50 @@ def load_previous_snapshot(path: str) -> Dict:
 
 def parse_user_list_xlsx(path: str, month: str) -> Dict[str, dict]:
     df = pd.read_excel(path)
+    df.columns = [str(c).strip() for c in df.columns]
+
+    email_col = find_column(df, EMAIL_COLUMNS)
+    if not email_col:
+        raise ValueError(f"❌ No email column found. Columns: {list(df.columns)}")
+
+    first_col = find_column(df, FIRST_NAME_COLUMNS)
+    last_col = find_column(df, LAST_NAME_COLUMNS)
+    name_col = find_column(df, NAME_COLUMNS)
+    status_col = find_column(df, STATUS_COLUMNS)
+    product_col = find_column(df, PRODUCT_COLUMNS)
+
     users = {}
 
     for _, row in df.iterrows():
-        email = normalize_email(str(row.get("Email Address", "")))
-        if not email or email == "nan":
+        raw_email = str(row.get(email_col, "")).strip()
+        if "@" not in raw_email:
             continue
 
-        first = str(row.get("First Name", "")).strip()
-        last = str(row.get("Last Name", "")).strip()
-        sign_in = str(row.get("Sign-in Allowed", "")).strip().lower()
-        products = str(row.get("Microsoft 365 Assigned Products", ""))
+        email = normalize_email(raw_email)
 
-        users[email] = {
-            "name": f"{first} {last}".strip(),
-            "status": "active" if sign_in == "yes" else "inactive",
-            "first_seen": None,  # resolved later
-            "last_seen": month,
-            "services": {
-                "m365": "office 365" in products.lower() or "microsoft 365" in products.lower(),
-                "edr": False,
-                "backup": False,
-                "phishing_training": False,
-                "dark_web_monitoring": False
-            },
-            "risk_signals": {
-                "phishing_clicked": False,
-                "dark_web_exposed": False,
-                "edr_incidents": 0
-            }
-        }
+        if name_col:
+            name = str(row.get(name_col, "")).strip()
+        else:
+            first = str(row.get(first_col, "")).strip() if first_col else ""
+            last = str(row.get(last_col, "")).strip() if last_col else ""
+            name = f"{first} {last}".strip()
+
+        users[email] = build_user(
+            email,
+            name,
+            row.get(status_col, "active") if status_col else "active",
+            row.get(product_col, "") if product_col else "",
+            month
+        )
+
+    if not users:
+        raise ValueError("❌ Parsed 0 users from XLSX")
 
     return users
 
 
 # =========================
-# PDF Parser
+# PDF Parser (HARDENED)
 # =========================
 
 def parse_user_list_pdf(path: str, month: str) -> Dict[str, dict]:
@@ -97,49 +189,83 @@ def parse_user_list_pdf(path: str, month: str) -> Dict[str, dict]:
             if not table or len(table) < 2:
                 continue
 
-            headers = [h.strip() if h else "" for h in table[0]]
+            header_row_index = None
 
-            for row in table[1:]:
-                data = dict(zip(headers, row))
-                email = normalize_email(data.get("Email Address", ""))
-
-                if not email:
+            # Detect real header row
+            for i, row in enumerate(table):
+                if not row:
                     continue
 
-                products = str(data.get("Microsoft 365 Assigned Products", ""))
+                cells = [str(c).lower() for c in row if c]
+                if len(row) >= 6 and any("email" in c for c in cells):
+                    header_row_index = i
+                    break
 
-                users[email] = {
-                    "name": f"{data.get('First Name','')} {data.get('Last Name','')}".strip(),
-                    "status": "active" if str(data.get("Sign-in Allowed", "")).lower() == "yes" else "inactive",
-                    "first_seen": None,
-                    "last_seen": month,
-                    "services": {
-                        "m365": "office 365" in products.lower() or "microsoft 365" in products.lower(),
-                        "edr": False,
-                        "backup": False,
-                        "phishing_training": False,
-                        "dark_web_monitoring": False
-                    },
-                    "risk_signals": {
-                        "phishing_clicked": False,
-                        "dark_web_exposed": False,
-                        "edr_incidents": 0
-                    }
-                }
+            if header_row_index is None:
+                continue
+
+            raw_headers = table[header_row_index]
+
+            headers = [
+                normalize_col(h) if h else f"col_{i}"
+                for i, h in enumerate(raw_headers)
+            ]
+
+            data_rows = [
+                r for r in table[header_row_index + 1 :]
+                if r and len(r) == len(headers)
+            ]
+
+            if not data_rows:
+                continue
+
+            df = pd.DataFrame(data_rows, columns=headers)
+
+            email_col = find_column(df, EMAIL_COLUMNS)
+            if not email_col:
+                continue
+
+            first_col = find_column(df, FIRST_NAME_COLUMNS)
+            last_col = find_column(df, LAST_NAME_COLUMNS)
+            name_col = find_column(df, NAME_COLUMNS)
+            status_col = find_column(df, STATUS_COLUMNS)
+            product_col = find_column(df, PRODUCT_COLUMNS)
+
+            for _, row in df.iterrows():
+                raw_email = str(row.get(email_col, "")).strip()
+                if "@" not in raw_email:
+                    continue
+
+                email = normalize_email(raw_email)
+
+                if name_col:
+                    name = str(row.get(name_col, "")).strip()
+                else:
+                    first = str(row.get(first_col, "")).strip() if first_col else ""
+                    last = str(row.get(last_col, "")).strip() if last_col else ""
+                    name = f"{first} {last}".strip()
+
+                users[email] = build_user(
+                    email,
+                    name,
+                    row.get(status_col, "active") if status_col else "active",
+                    row.get(product_col, "") if product_col else "",
+                    month
+                )
+
+    if not users:
+        raise ValueError("❌ Parsed 0 users from PDF")
 
     return users
 
 
 # =========================
-# First-Seen Resolution
+# First Seen Resolution
 # =========================
 
 def resolve_first_seen(current: Dict, previous: Dict, month: str):
     for email, user in current.items():
-        if email in previous:
-            user["first_seen"] = previous[email].get("first_seen")
-        else:
-            user["first_seen"] = month
+        user["first_seen"] = previous.get(email, {}).get("first_seen", month)
 
 
 # =========================
@@ -147,16 +273,13 @@ def resolve_first_seen(current: Dict, previous: Dict, month: str):
 # =========================
 
 def validate_users(users: Dict):
-    emails = set()
+    if not users:
+        raise ValueError("❌ No users parsed")
+
     for email, user in users.items():
-        if email in emails:
-            raise ValueError(f"Duplicate user detected: {email}")
-        emails.add(email)
-
-        if not user["name"]:
+        if not user.get("name"):
             raise ValueError(f"User missing name: {email}")
-
-        if not user["first_seen"]:
+        if not user.get("first_seen"):
             raise ValueError(f"User missing first_seen: {email}")
 
 
@@ -164,32 +287,20 @@ def validate_users(users: Dict):
 # Main Orchestrator
 # =========================
 
-def parse_user_list(
-    input_path: str,
-    month: str,
-    previous_snapshot_path: str,
-    output_path: str
-):
+def parse_user_list(input_path, month, previous_snapshot_path, output_path):
     month = month_to_str(month)
-
-    # Load previous users (if any)
     previous_users = load_previous_snapshot(previous_snapshot_path)
 
-    # Parse input
     if input_path.lower().endswith(".xlsx"):
         current_users = parse_user_list_xlsx(input_path, month)
     elif input_path.lower().endswith(".pdf"):
         current_users = parse_user_list_pdf(input_path, month)
     else:
-        raise ValueError("Unsupported file format (use .pdf or .xlsx)")
+        raise ValueError("Unsupported file type")
 
-    # Resolve first_seen
     resolve_first_seen(current_users, previous_users, month)
-
-    # Validation
     validate_users(current_users)
 
-    # Build output snapshot
     snapshot = {
         "metadata": {
             "generated_at": datetime.utcnow().isoformat() + "Z",
@@ -199,10 +310,9 @@ def parse_user_list(
         "users": current_users
     }
 
-    # Ensure output dir exists
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-    with open(output_path, "w") as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(snapshot, f, indent=2)
 
     print(f"✅ User list parsed successfully: {len(current_users)} users")
@@ -210,26 +320,17 @@ def parse_user_list(
 
 
 # =========================
-# CLI Usage
+# CLI
 # =========================
 
 if __name__ == "__main__":
-    """
-    Example:
-    python user_list_parser.py \
-      --input data/raw/2025-11/user_list.xlsx \
-      --month 2025-11 \
-      --previous data/normalized/2025-10.json \
-      --output data/normalized/2025-11.json
-    """
-
     import argparse
 
     parser = argparse.ArgumentParser(description="User List Parser")
-    parser.add_argument("--input", required=True, help="Path to user list PDF/XLSX")
-    parser.add_argument("--month", required=True, help="Month in YYYY-MM")
-    parser.add_argument("--previous", required=False, default="", help="Previous month snapshot JSON")
-    parser.add_argument("--output", required=True, help="Output normalized JSON path")
+    parser.add_argument("--input", required=True)
+    parser.add_argument("--month", required=True)
+    parser.add_argument("--previous", default="")
+    parser.add_argument("--output", required=True)
 
     args = parser.parse_args()
 

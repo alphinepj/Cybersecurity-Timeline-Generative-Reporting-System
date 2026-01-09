@@ -1,0 +1,71 @@
+# ===============================
+# Python
+# ===============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+.env
+.venv/
+venv/
+ENV/
+
+# ===============================
+# Jupyter / Colab
+# ===============================
+.ipynb_checkpoints/
+
+# ===============================
+# OS / Editor
+# ===============================
+.DS_Store
+.vscode/
+.idea/
+
+# ===============================
+# Project Data (DO NOT COMMIT)
+# ===============================
+data/raw/
+data/normalized/
+data/enriched/
+data/diffs/
+data/insights/
+data/narratives/
+
+# ===============================
+# Reports / Outputs
+# ===============================
+reports/
+*.pdf
+*.docx
+
+# ===============================
+# Logs / Temp
+# ===============================
+logs/
+*.log
+tmp/
+
+# ===============================
+# Model Cache (HuggingFace)
+# ===============================
+.cache/
+.huggingface/
+hf_cache/
+
+# ===============================
+# Secrets
+# ===============================
+*.key
+*.pem
+*.crt
+*.jsonl
+*.env
+
+# ===============================
+# System Artifacts
+# ===============================
+*.swp
+*.swo

@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "generated_at": "2026-01-08T22:00:29.017808Z",
+    "generated_at": "2026-01-09T17:01:20.348580Z",
     "month": "2025-10",
     "source": "asset_list",
-    "edr_enriched_at": "2026-01-08T22:00:29.501672Z",
-    "backup_enriched_at": "2026-01-08T22:00:30.368436Z"
+    "edr_enriched_at": "2026-01-09T17:01:20.836390Z",
+    "backup_enriched_at": "2026-01-09T17:01:21.454244Z"
   },
   "assets": {
     "SN:0F003DS213201J": {
@@ -24,9 +24,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F3473R24213MR": {
@@ -46,9 +46,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F3474C24213MR": {
@@ -68,9 +68,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F3478F24213MR": {
@@ -90,9 +90,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F34CVY24513MR": {
@@ -112,9 +112,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F34CY424513MR": {
@@ -134,9 +134,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F36JB624363MR": {
@@ -156,9 +156,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F36KFB24363MR": {
@@ -178,9 +178,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F36KHP24363MR": {
@@ -200,9 +200,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F36KJ924363MR": {
@@ -222,9 +222,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F36KMJ24363MR": {
@@ -244,9 +244,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F36KPM24363MR": {
@@ -266,9 +266,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F37DBM25033MR": {
@@ -288,9 +288,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F3BF8F24373MR": {
@@ -310,9 +310,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:PF3HYVET": {
@@ -332,9 +332,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F38W3423463BF": {
@@ -354,9 +354,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F012SR22493BF": {
@@ -376,9 +376,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F36KG924363MR": {
@@ -398,9 +398,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F05XYP22313BF": {
@@ -420,9 +420,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:16BMKY3": {
@@ -442,9 +442,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:5GZQM53": {
@@ -464,9 +464,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F02TXV22353BF": {
@@ -486,9 +486,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F34C3T24403MR": {
@@ -508,9 +508,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F01GWX22273BF": {
@@ -530,9 +530,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F013DS22353BF": {
@@ -552,9 +552,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:0F009CN214401J": {
@@ -574,9 +574,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:5CG13467K9": {
@@ -596,9 +596,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:5CD201BK1Y": {
@@ -618,9 +618,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     },
     "SN:5CD201BK1F": {
@@ -640,9 +640,9 @@
         "risk_level": "unknown"
       },
       "backup_state": {
-        "enabled": false,
-        "status": "not_configured",
-        "risk_level": "high"
+        "enabled": true,
+        "status": "assumed_enabled",
+        "risk_level": "medium"
       }
     }
   }
