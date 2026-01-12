@@ -3,7 +3,7 @@ Full Pipeline Runner
 --------------------
 Runs the entire Cybersecurity Reporting System end-to-end.
 
-Phase 1 → Phase 3
+Phase 1 → Phase 3.5 (PDF Export)
 """
 
 import subprocess
@@ -63,7 +63,7 @@ def run_pipeline(client: str, month: str):
         sys.exit(f"❌ Raw data directory not found: {raw_dir}")
 
     # -------------------------
-    # Phase 1 — Monthly Runner
+    # Phase 1 — Ingestion & Normalization
     # -------------------------
     run(
         [
@@ -76,7 +76,7 @@ def run_pipeline(client: str, month: str):
     )
 
     # -------------------------
-    # Discover Reports (INTENT-BASED)
+    # Discover Reports (Intent-Based)
     # -------------------------
 
     edr_report = (
@@ -96,10 +96,6 @@ def run_pipeline(client: str, month: str):
         find_file(raw_dir, ["dark", "web"]) or
         find_file(raw_dir, ["darkweb"])
     )
-
-    # -------------------------
-    # Validation
-    # -------------------------
 
     missing = []
     if not edr_report:
@@ -124,7 +120,7 @@ def run_pipeline(client: str, month: str):
     print(f"   • DarkWeb : {darkweb_report.name}")
 
     # -------------------------
-    # Phase 2 — Enrichers
+    # Phase 2 — Enrichment
     # -------------------------
 
     run(
@@ -184,7 +180,7 @@ def run_pipeline(client: str, month: str):
     )
 
     # -------------------------
-    # Phase 2.5 — Insights
+    # Phase 2.5 — Insight Engine
     # -------------------------
 
     run(
@@ -204,7 +200,7 @@ def run_pipeline(client: str, month: str):
     )
 
     # -------------------------
-    # Phase 2.6 — Narrative
+    # Phase 2.6 — Narrative Builder
     # -------------------------
 
     run(
@@ -220,7 +216,7 @@ def run_pipeline(client: str, month: str):
     )
 
     # -------------------------
-    # Phase 3 — LLM Polishing (FLAN)
+    # Phase 3 — LLM Polishing
     # -------------------------
 
     run(
@@ -235,8 +231,29 @@ def run_pipeline(client: str, month: str):
         "Phase 3: LLM-Polished Executive Report",
     )
 
+    # -------------------------
+    # Phase 3.5 — PDF Export
+    # -------------------------
+
+    run(
+        [
+            PYTHON,
+            str(SCRIPTS / "exporters/pdf_exporter.py"),
+            "--input",
+            f"reports/{month}/executive_report_polished.md",
+            "--output",
+            f"reports/{month}/executive_report.pdf",
+            "--client",
+            client,
+            "--month",
+            month,
+        ],
+        "Phase 3.5: Executive PDF Export",
+    )
+
     print("\n✅ FULL PIPELINE COMPLETED SUCCESSFULLY")
-    print(f"📄 Final report: reports/{month}/executive_report_polished.md")
+    print(f"📄 Markdown Report: reports/{month}/executive_report_polished.md")
+    print(f"📄 PDF Report     : reports/{month}/executive_report.pdf")
 
 
 # =====================================================
@@ -251,8 +268,8 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--client",
-        default="altera",
-        help="Client identifier (future use)"
+        default="Altera Fund Advisors",
+        help="Client name for reporting"
     )
     parser.add_argument(
         "--month",

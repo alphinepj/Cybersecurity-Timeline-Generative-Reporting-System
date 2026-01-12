@@ -4,6 +4,10 @@ User List Parser
 Parses User List reports (PDF / XLSX) into canonical JSON user objects.
 
 Phase: 1 (DB-less)
+Hardened for:
+- Email normalization
+- Domain alias resolution
+- Duplicate safety
 """
 
 import json
@@ -13,6 +17,7 @@ from typing import Dict, List
 
 import pandas as pd
 import pdfplumber
+import unicodedata
 
 
 # =========================
@@ -29,54 +34,43 @@ EMAIL_COLUMNS = [
     "username"
 ]
 
-FIRST_NAME_COLUMNS = [
-    "first name",
-    "firstname",
-    "given name"
-]
-
-LAST_NAME_COLUMNS = [
-    "last name",
-    "lastname",
-    "surname"
-]
-
-NAME_COLUMNS = [
-    "name",
-    "full name",
-    "display name"
-]
-
-STATUS_COLUMNS = [
-    "status",
-    "account status",
-    "enabled",
-    "active",
-    "sign-in allowed"
-]
-
-PRODUCT_COLUMNS = [
-    "microsoft 365 assigned products",
-    "assigned products",
-    "licenses",
-    "products"
-]
+FIRST_NAME_COLUMNS = ["first name", "firstname", "given name"]
+LAST_NAME_COLUMNS = ["last name", "lastname", "surname"]
+NAME_COLUMNS = ["name", "full name", "display name"]
+STATUS_COLUMNS = ["status", "account status", "enabled", "active", "sign-in allowed"]
+PRODUCT_COLUMNS = ["microsoft 365 assigned products", "assigned products", "licenses", "products"]
 
 
 # =========================
-# Utility Functions
+# Email Canonicalization
 # =========================
+
+DOMAIN_ALIASES = {
+    "@alteradevco.co": "@alteradevco.com"
+}
+
 
 def normalize_email(email: str) -> str:
     if not email:
         return ""
-    return email.strip().lower()
+
+    # Normalize unicode (fix invisible chars from PDFs)
+    email = unicodedata.normalize("NFKC", email)
+
+    email = email.strip().lower()
+
+    if "@" not in email:
+        return ""
+
+    for old, new in DOMAIN_ALIASES.items():
+        if email.endswith(old):
+            email = email.replace(old, new)
+
+    return email
 
 
 def normalize_col(col) -> str:
-    if not col:
-        return ""
-    return str(col).lower().strip()
+    return str(col).lower().strip() if col else ""
 
 
 def month_to_str(month: str) -> str:
@@ -111,10 +105,7 @@ def build_user(email, name, status_raw, products_raw, month):
         "first_seen": None,
         "last_seen": month,
         "services": {
-            "m365": any(
-                k in (products_raw or "").lower()
-                for k in ("office 365", "microsoft 365", "m365")
-            ),
+            "m365": any(k in (products_raw or "").lower() for k in ("office 365", "microsoft 365", "m365")),
             "edr": False,
             "backup": False,
             "phishing_training": False,
@@ -147,13 +138,18 @@ def parse_user_list_xlsx(path: str, month: str) -> Dict[str, dict]:
     product_col = find_column(df, PRODUCT_COLUMNS)
 
     users = {}
+    duplicates = set()
 
     for _, row in df.iterrows():
         raw_email = str(row.get(email_col, "")).strip()
-        if "@" not in raw_email:
+        email = normalize_email(raw_email)
+
+        if not email:
             continue
 
-        email = normalize_email(raw_email)
+        if email in users:
+            duplicates.add(email)
+            continue
 
         if name_col:
             name = str(row.get(name_col, "")).strip()
@@ -170,6 +166,9 @@ def parse_user_list_xlsx(path: str, month: str) -> Dict[str, dict]:
             month
         )
 
+    if duplicates:
+        print(f"⚠️ Skipped {len(duplicates)} duplicate users after normalization")
+
     if not users:
         raise ValueError("❌ Parsed 0 users from XLSX")
 
@@ -182,6 +181,7 @@ def parse_user_list_xlsx(path: str, month: str) -> Dict[str, dict]:
 
 def parse_user_list_pdf(path: str, month: str) -> Dict[str, dict]:
     users = {}
+    duplicates = set()
 
     with pdfplumber.open(path) as pdf:
         for page in pdf.pages:
@@ -190,36 +190,28 @@ def parse_user_list_pdf(path: str, month: str) -> Dict[str, dict]:
                 continue
 
             header_row_index = None
-
-            # Detect real header row
             for i, row in enumerate(table):
-                if not row:
-                    continue
-
-                cells = [str(c).lower() for c in row if c]
-                if len(row) >= 6 and any("email" in c for c in cells):
+                if row and any("email" in str(c).lower() for c in row if c):
                     header_row_index = i
                     break
 
             if header_row_index is None:
                 continue
 
-            raw_headers = table[header_row_index]
-
             headers = [
                 normalize_col(h) if h else f"col_{i}"
-                for i, h in enumerate(raw_headers)
+                for i, h in enumerate(table[header_row_index])
             ]
 
-            data_rows = [
+            rows = [
                 r for r in table[header_row_index + 1 :]
                 if r and len(r) == len(headers)
             ]
 
-            if not data_rows:
+            if not rows:
                 continue
 
-            df = pd.DataFrame(data_rows, columns=headers)
+            df = pd.DataFrame(rows, columns=headers)
 
             email_col = find_column(df, EMAIL_COLUMNS)
             if not email_col:
@@ -232,11 +224,13 @@ def parse_user_list_pdf(path: str, month: str) -> Dict[str, dict]:
             product_col = find_column(df, PRODUCT_COLUMNS)
 
             for _, row in df.iterrows():
-                raw_email = str(row.get(email_col, "")).strip()
-                if "@" not in raw_email:
+                email = normalize_email(str(row.get(email_col, "")).strip())
+                if not email:
                     continue
 
-                email = normalize_email(raw_email)
+                if email in users:
+                    duplicates.add(email)
+                    continue
 
                 if name_col:
                     name = str(row.get(name_col, "")).strip()
@@ -252,6 +246,9 @@ def parse_user_list_pdf(path: str, month: str) -> Dict[str, dict]:
                     row.get(product_col, "") if product_col else "",
                     month
                 )
+
+    if duplicates:
+        print(f"⚠️ Skipped {len(duplicates)} duplicate users after normalization")
 
     if not users:
         raise ValueError("❌ Parsed 0 users from PDF")
