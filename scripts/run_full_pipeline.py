@@ -76,26 +76,12 @@ def run_pipeline(client: str, month: str):
     )
 
     # -------------------------
-    # Discover Reports (Intent-Based)
+    # Discover Reports
     # -------------------------
-
-    edr_report = (
-        find_file(raw_dir, ["edr"]) or
-        find_file(raw_dir, ["rocket", "cyber"])
-    )
-
-    backup_report = (
-        find_file(raw_dir, ["backup"]) or
-        find_file(raw_dir, ["files", "folders"]) or
-        find_file(raw_dir, ["file", "folder"])
-    )
-
+    edr_report = find_file(raw_dir, ["edr"])
+    backup_report = find_file(raw_dir, ["backup"])
     phishing_report = find_file(raw_dir, ["phishing"])
-
-    darkweb_report = (
-        find_file(raw_dir, ["dark", "web"]) or
-        find_file(raw_dir, ["darkweb"])
-    )
+    darkweb_report = find_file(raw_dir, ["dark", "web"])
 
     missing = []
     if not edr_report:
@@ -122,7 +108,6 @@ def run_pipeline(client: str, month: str):
     # -------------------------
     # Phase 2 — Enrichment
     # -------------------------
-
     run(
         [
             PYTHON,
@@ -182,7 +167,6 @@ def run_pipeline(client: str, month: str):
     # -------------------------
     # Phase 2.5 — Insight Engine
     # -------------------------
-
     run(
         [
             PYTHON,
@@ -200,9 +184,27 @@ def run_pipeline(client: str, month: str):
     )
 
     # -------------------------
+    # 🆕 Phase 2.7 — Dashboard Aggregation
+    # -------------------------
+    run(
+        [
+            PYTHON,
+            str(SCRIPTS / "dash_app/dashboard_aggregator.py"),
+            "--client",
+            client,
+            "--month",
+            month,
+            "--insights",
+            f"data/insights/{month}-insights.json",
+            "--output",
+            f"data/dashboard/{month}.json",
+        ],
+        "Phase 2.7: Dashboard Aggregation",
+    )
+
+    # -------------------------
     # Phase 2.6 — Narrative Builder
     # -------------------------
-
     run(
         [
             PYTHON,
@@ -218,7 +220,6 @@ def run_pipeline(client: str, month: str):
     # -------------------------
     # Phase 3 — LLM Polishing
     # -------------------------
-
     run(
         [
             PYTHON,
@@ -234,7 +235,6 @@ def run_pipeline(client: str, month: str):
     # -------------------------
     # Phase 3.5 — PDF Export
     # -------------------------
-
     run(
         [
             PYTHON,
@@ -252,8 +252,9 @@ def run_pipeline(client: str, month: str):
     )
 
     print("\n✅ FULL PIPELINE COMPLETED SUCCESSFULLY")
-    print(f"📄 Markdown Report: reports/{month}/executive_report_polished.md")
-    print(f"📄 PDF Report     : reports/{month}/executive_report.pdf")
+    print(f"📄 Markdown Report : reports/{month}/executive_report_polished.md")
+    print(f"📄 PDF Report      : reports/{month}/executive_report.pdf")
+    print(f"📊 Dashboard Data  : data/dashboard/{month}.json")
 
 
 # =====================================================

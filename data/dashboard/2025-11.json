@@ -1,0 +1,46 @@
+{
+  "client": "Altera Fund Advisors",
+  "month": "2025-11",
+  "metadata": {
+    "generated_at": "2026-01-13T14:41:10.461219Z",
+    "source": "dashboard_aggregator"
+  },
+  "kpis": {
+    "total_users": 34,
+    "total_devices": 33,
+    "net_user_change": 0,
+    "net_device_change": 0,
+    "identity_events": 2,
+    "asset_events": 1,
+    "security_risks": 0,
+    "positive_findings": 3
+  },
+  "risk_posture": {
+    "overall": "low",
+    "risk_count": 0,
+    "summary": "No material security risks identified during the period."
+  },
+  "identity": {
+    "events": [
+      "2 new user(s) were onboarded during the period.",
+      "7 user(s) were deprovisioned during the period."
+    ]
+  },
+  "assets": {
+    "events": [
+      "4 new workstation(s) were added."
+    ]
+  },
+  "security": {
+    "risks": [],
+    "positives": [
+      "No users failed phishing simulations this period.",
+      "All monitored devices have healthy backup status.",
+      "No high-severity EDR incidents were detected."
+    ]
+  },
+  "artifacts": {
+    "executive_report_pdf": "reports/2025-11/executive_report.pdf",
+    "executive_report_md": "reports/2025-11/executive_report_polished.md"
+  }
+}
