@@ -1,17 +1,19 @@
 {
   "client": "Altera Fund Advisors",
-  "month": "2025-11",
+  "month": "2025-10",
   "metadata": {
-    "generated_at": "2026-01-13T15:20:10.194762Z",
+    "generated_at": "2026-01-14T14:27:54.831165Z",
     "source": "dashboard_aggregator"
   },
   "kpis": {
-    "total_users": 34,
-    "total_devices": 33,
+    "total_users": 39,
+    "total_devices": 29,
+    "users_joined": 0,
+    "users_departed": 0,
+    "devices_added": 0,
+    "devices_retired": 0,
     "net_user_change": 0,
     "net_device_change": 0,
-    "identity_events": 2,
-    "asset_events": 1,
     "security_risks": 0,
     "positive_findings": 3
   },
@@ -21,15 +23,10 @@
     "summary": "No material security risks identified during the period."
   },
   "identity": {
-    "events": [
-      "2 new user(s) were onboarded during the period.",
-      "7 user(s) were deprovisioned during the period."
-    ]
+    "events": []
   },
   "assets": {
-    "events": [
-      "4 new workstation(s) were added."
-    ]
+    "events": []
   },
   "security": {
     "risks": [],
@@ -40,7 +37,7 @@
     ]
   },
   "artifacts": {
-    "executive_report_pdf": "reports/2025-11/executive_report.pdf",
-    "executive_report_md": "reports/2025-11/executive_report_polished.md"
+    "executive_report_pdf": "reports/2025-10/executive_report.pdf",
+    "executive_report_md": "reports/2025-10/executive_report_polished.md"
   }
 }

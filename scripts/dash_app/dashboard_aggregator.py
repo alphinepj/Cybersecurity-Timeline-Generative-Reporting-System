@@ -34,24 +34,28 @@ def save_json(data: Dict, path: str):
 
 
 # =====================================================
-# KPI Extraction (Aligned with Insight Engine)
+# KPI Extraction (CANONICAL & DASH-SAFE)
 # =====================================================
 
 def extract_kpis(insights: Dict) -> Dict:
     summary = insights.get("summary_metrics", {})
 
     return {
-        # Headline counts
+        # Totals
         "total_users": summary.get("total_users", 0),
         "total_devices": summary.get("total_assets", 0),
 
-        # Net changes (already computed upstream)
-        "net_user_change": summary.get("user_change", 0),
-        "net_device_change": summary.get("asset_change", 0),
+        # Activity (explicit)
+        "users_joined": len(insights.get("users_joined", [])),
+        "users_departed": len(insights.get("users_departed", [])),
+        "devices_added": len(insights.get("devices_added", [])),
+        "devices_retired": len(insights.get("devices_retired", [])),
 
-        # Event counts (derived from insight lists, not raw data)
-        "identity_events": len(insights.get("identity_insights", [])),
-        "asset_events": len(insights.get("asset_insights", [])),
+        # Net deltas (from diff engine)
+        "net_user_change": summary.get("net_user_change", 0),
+        "net_device_change": summary.get("device_count_change", 0),
+
+        # Risk posture
         "security_risks": len(insights.get("security_risks", [])),
         "positive_findings": len(insights.get("positive_findings", [])),
     }
@@ -76,25 +80,29 @@ def determine_risk_posture(insights: Dict) -> Dict:
 
 
 # =====================================================
-# Detail Sections (Text-Preserving)
+# Detail Sections (Lists preserved verbatim)
 # =====================================================
 
 def extract_identity(insights: Dict) -> Dict:
     return {
-        "events": insights.get("identity_insights", [])
+        "events": insights.get("identity_insights", []),
+        "users_joined": insights.get("users_joined", []),
+        "users_departed": insights.get("users_departed", []),
     }
 
 
 def extract_assets(insights: Dict) -> Dict:
     return {
-        "events": insights.get("asset_insights", [])
+        "events": insights.get("asset_insights", []),
+        "devices_added": insights.get("devices_added", []),
+        "devices_retired": insights.get("devices_retired", []),
     }
 
 
 def extract_security(insights: Dict) -> Dict:
     return {
         "risks": insights.get("security_risks", []),
-        "positives": insights.get("positive_findings", [])
+        "positives": insights.get("positive_findings", []),
     }
 
 
@@ -111,7 +119,7 @@ def build_dashboard(
     insights = load_json(insights_path)
 
     dashboard = {
-        # Top-level identity (UI-safe)
+        # Dash-safe identity
         "client": client,
         "month": month,
 
@@ -120,16 +128,18 @@ def build_dashboard(
             "source": "dashboard_aggregator"
         },
 
-        # KPIs & posture
+        # KPIs
         "kpis": extract_kpis(insights),
+
+        # Risk posture
         "risk_posture": determine_risk_posture(insights),
 
-        # Detail sections (verbatim)
+        # Detailed sections (for tables)
         "identity": extract_identity(insights),
         "assets": extract_assets(insights),
         "security": extract_security(insights),
 
-        # Report artifacts
+        # Artifacts
         "artifacts": {
             "executive_report_pdf": f"reports/{month}/executive_report.pdf",
             "executive_report_md": f"reports/{month}/executive_report_polished.md"

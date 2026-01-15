@@ -1,20 +1,26 @@
-
 import dash_bootstrap_components as dbc
 from dash import html
 
-def simple_table(title, rows, empty_message="None"):
-    if not rows:
-        rows = [empty_message]
 
+def simple_table(title: str, rows: list, empty_text: str):
     return dbc.Card(
         [
-            dbc.CardHeader(title),
+            dbc.CardHeader(html.H5(title)),
             dbc.CardBody(
-                html.Ul(
-                    [html.Li(r) for r in rows],
-                    className="mb-0"
+                html.Table(
+                    [
+                        html.Thead(
+                            html.Tr([html.Th("Item")])
+                        ),
+                        html.Tbody(
+                            [html.Tr([html.Td(r)]) for r in rows]
+                            if rows
+                            else [html.Tr([html.Td(empty_text)])]
+                        )
+                    ],
+                    className="table table-striped table-bordered"
                 )
-            ),
+            )
         ],
-        className="mb-3",
+        className="mb-4"
     )

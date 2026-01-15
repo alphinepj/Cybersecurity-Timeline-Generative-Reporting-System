@@ -8,7 +8,7 @@ Design:
 - No AI
 - Fully explainable
 - Executive & auditor friendly
-- Emits BOTH summaries and entity-level facts
+- Emits BOTH metrics and entity-level facts
 """
 
 import json
@@ -52,22 +52,18 @@ def analyze_identity(diff: Dict) -> Dict:
     new_users = diff["users"]["new_users"]
     resigned_users = diff["users"]["resigned_users"]
 
-    summaries = []
-
+    summary = []
     if new_users:
-        summaries.append(
-            f"{len(new_users)} new user(s) were onboarded during the period."
-        )
-
+        summary.append(f"{len(new_users)} new user(s) were onboarded during the period.")
     if resigned_users:
-        summaries.append(
-            f"{len(resigned_users)} user(s) were deprovisioned during the period."
-        )
+        summary.append(f"{len(resigned_users)} user(s) were deprovisioned during the period.")
 
     return {
-        "summary": summaries,
+        "summary": summary,
         "users_joined": new_users,
-        "users_departed": resigned_users
+        "users_departed": resigned_users,
+        "users_joined_count": len(new_users),
+        "users_departed_count": len(resigned_users)
     }
 
 
@@ -79,82 +75,63 @@ def analyze_assets(diff: Dict) -> Dict:
     new_devices = diff["assets"]["new_devices"]
     retired_devices = diff["assets"]["retired_devices"]
 
-    summaries = []
-
+    summary = []
     if new_devices:
-        summaries.append(
-            f"{len(new_devices)} new workstation(s) were added."
-        )
-
+        summary.append(f"{len(new_devices)} new workstation(s) were added.")
     if retired_devices:
-        summaries.append(
-            f"{len(retired_devices)} workstation(s) were retired."
-        )
+        summary.append(f"{len(retired_devices)} workstation(s) were retired.")
 
     return {
-        "summary": summaries,
+        "summary": summary,
         "devices_added": new_devices,
-        "devices_retired": retired_devices
+        "devices_retired": retired_devices,
+        "devices_added_count": len(new_devices),
+        "devices_retired_count": len(retired_devices)
     }
 
 
 # =====================================================
-# Security Risk Detection
+# Security Risk Analysis
 # =====================================================
 
-def analyze_security_risks(users: Dict, assets: Dict) -> Dict:
-    risk_summaries = []
+def analyze_security(users: Dict, assets: Dict) -> Dict:
+    risks = []
+
     phishing_failed_users = []
     darkweb_exposed_users = []
-    edr_affected_devices = []
     devices_without_backup = []
+    edr_affected_devices = []
 
-    # ---- User risks
     for email, user in users["users"].items():
-        risk = user.get("risk_signals", {})
+        signals = user.get("risk_signals", {})
 
-        if risk.get("phishing_clicked"):
+        if signals.get("phishing_clicked"):
             phishing_failed_users.append(email)
-            risk_summaries.append(
-                f"User {email} failed a phishing simulation."
-            )
+            risks.append(f"User {email} failed a phishing simulation.")
 
-        if risk.get("dark_web_exposed"):
+        if signals.get("dark_web_exposed"):
             darkweb_exposed_users.append(email)
-            risk_summaries.append(
-                f"User {email} credentials were found on the dark web."
-            )
+            risks.append(f"User {email} credentials were found on the dark web.")
 
-    # ---- Asset risks
     for asset in assets["assets"].values():
         name = asset.get("device_name") or asset.get("serial_number")
         backup = asset.get("backup_state", {})
-        sec = asset.get("security_state", {})
+        security = asset.get("security_state", {})
 
         if backup.get("enabled") is False:
             devices_without_backup.append(name)
-            risk_summaries.append(
-                f"Asset {name} does not have backups configured."
-            )
+            risks.append(f"Asset {name} does not have backups configured.")
 
-        if backup.get("risk_level") == "critical":
+        if security.get("risk_level") == "high":
             edr_affected_devices.append(name)
-            risk_summaries.append(
-                f"Asset {name} has failing backups."
-            )
-
-        if sec.get("risk_level") == "high":
-            edr_affected_devices.append(name)
-            risk_summaries.append(
-                f"Asset {name} has unresolved EDR incidents."
-            )
+            risks.append(f"Asset {name} has unresolved EDR incidents.")
 
     return {
-        "summary": risk_summaries,
+        "summary": risks,
         "phishing_failed_users": phishing_failed_users,
         "darkweb_exposed_users": darkweb_exposed_users,
-        "edr_affected_devices": edr_affected_devices,
-        "devices_without_backup": devices_without_backup
+        "devices_without_backup": devices_without_backup,
+        "edr_affected_devices": edr_affected_devices
     }
 
 
@@ -165,63 +142,37 @@ def analyze_security_risks(users: Dict, assets: Dict) -> Dict:
 def analyze_positives(users: Dict, assets: Dict) -> List[str]:
     positives = []
 
-    if not any(
-        u.get("risk_signals", {}).get("phishing_clicked")
-        for u in users["users"].values()
-    ):
+    if not any(u.get("risk_signals", {}).get("phishing_clicked") for u in users["users"].values()):
         positives.append("No users failed phishing simulations this period.")
 
-    if not any(
-        a.get("backup_state", {}).get("risk_level") == "critical"
-        for a in assets["assets"].values()
-    ):
+    if not any(a.get("backup_state", {}).get("enabled") is False for a in assets["assets"].values()):
         positives.append("All monitored devices have healthy backup status.")
 
-    if not any(
-        a.get("security_state", {}).get("risk_level") == "high"
-        for a in assets["assets"].values()
-    ):
+    if not any(a.get("security_state", {}).get("risk_level") == "high" for a in assets["assets"].values()):
         positives.append("No high-severity EDR incidents were detected.")
 
     return positives
 
 
 # =====================================================
-# Summary Metrics (Expanded)
+# Summary Metrics (CANONICAL)
 # =====================================================
 
-def build_summary(users: Dict, assets: Dict, diff: Dict) -> Dict:
+def build_summary(users: Dict, assets: Dict, diff: Dict, identity: Dict, assets_i: Dict, security: Dict) -> Dict:
     return {
         "total_users": len(users["users"]),
         "total_assets": len(assets["assets"]),
 
-        "users_joined": len(diff["users"]["new_users"]),
-        "users_departed": len(diff["users"]["resigned_users"]),
-        "net_user_change": diff["metrics"]["user_count_change"],
+        "users_joined": identity["users_joined_count"],
+        "users_departed": identity["users_departed_count"],
+        "user_change": diff["metrics"]["user_count_change"],
 
-        "new_devices": len(diff["assets"]["new_devices"]),
-        "retired_devices": len(diff["assets"]["retired_devices"]),
-        "device_count_change": diff["metrics"]["device_count_change"],
+        "new_devices": assets_i["devices_added_count"],
+        "retired_devices": assets_i["devices_retired_count"],
+        "asset_change": diff["metrics"]["device_count_change"],
 
-        "backup_coverage_percent": round(
-            100
-            * sum(
-                1 for a in assets["assets"].values()
-                if a.get("backup_state", {}).get("enabled")
-            )
-            / max(len(assets["assets"]), 1),
-            1
-        ),
-
-        "phishing_failures": sum(
-            1 for u in users["users"].values()
-            if u.get("risk_signals", {}).get("phishing_clicked")
-        ),
-
-        "critical_edr_incidents": sum(
-            1 for a in assets["assets"].values()
-            if a.get("security_state", {}).get("risk_level") == "high"
-        ),
+        "phishing_failures": len(security["phishing_failed_users"]),
+        "critical_edr_incidents": len(security["edr_affected_devices"]),
 
         "executive_summary": (
             "The organization maintained a stable security posture during the reporting period, "
@@ -234,41 +185,35 @@ def build_summary(users: Dict, assets: Dict, diff: Dict) -> Dict:
 # Main Engine
 # =====================================================
 
-def run_insight_engine(
-    users_path: str,
-    assets_path: str,
-    diff_path: str,
-    output_path: str
-):
+def run_insight_engine(users_path: str, assets_path: str, diff_path: str, output_path: str):
     users = load_json(users_path)
     assets = load_json(assets_path)
 
-    diff = load_json(diff_path)
-    if diff is None:
-        print("ℹ️ Diff file not found — using baseline (first month)")
-        diff = empty_diff()
+    diff = load_json(diff_path) or empty_diff()
 
     identity = analyze_identity(diff)
-    assets_insight = analyze_assets(diff)
-    risks = analyze_security_risks(users, assets)
+    assets_i = analyze_assets(diff)
+    security = analyze_security(users, assets)
+    positives = analyze_positives(users, assets)
 
     insights = {
-        "summary_metrics": build_summary(users, assets, diff),
+        "summary_metrics": build_summary(users, assets, diff, identity, assets_i, security),
 
         "identity_insights": identity["summary"],
         "users_joined": identity["users_joined"],
         "users_departed": identity["users_departed"],
 
-        "asset_insights": assets_insight["summary"],
-        "devices_added": assets_insight["devices_added"],
-        "devices_retired": assets_insight["devices_retired"],
+        "asset_insights": assets_i["summary"],
+        "devices_added": assets_i["devices_added"],
+        "devices_retired": assets_i["devices_retired"],
 
-        "security_risks": risks["summary"],
-        "phishing_failed_users": risks["phishing_failed_users"],
-        "darkweb_exposed_users": risks["darkweb_exposed_users"],
-        "devices_without_backup_list": risks["devices_without_backup"],
+        "security_risks": security["summary"],
+        "phishing_failed_users": security["phishing_failed_users"],
+        "darkweb_exposed_users": security["darkweb_exposed_users"],
+        "devices_without_backup_list": security["devices_without_backup"],
 
-        "positive_findings": analyze_positives(users, assets),
+        "positive_findings": positives,
+
         "recommendations": [
             "Continue regular phishing simulations and security awareness training.",
             "Ensure backup coverage remains enabled for all endpoints.",

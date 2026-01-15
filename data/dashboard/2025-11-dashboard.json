@@ -2,16 +2,18 @@
   "client": "Altera Fund Advisors",
   "month": "2025-11",
   "metadata": {
-    "generated_at": "2026-01-13T15:20:10.194762Z",
+    "generated_at": "2026-01-14T14:51:08.549650Z",
     "source": "dashboard_aggregator"
   },
   "kpis": {
     "total_users": 34,
     "total_devices": 33,
+    "users_joined": 2,
+    "users_departed": 7,
+    "devices_added": 4,
+    "devices_retired": 0,
     "net_user_change": 0,
     "net_device_change": 0,
-    "identity_events": 2,
-    "asset_events": 1,
     "security_risks": 0,
     "positive_findings": 3
   },
@@ -24,12 +26,32 @@
     "events": [
       "2 new user(s) were onboarded during the period.",
       "7 user(s) were deprovisioned during the period."
+    ],
+    "users_joined": [
+      "ddenieunkerk@alteradevco.co\nm",
+      "office.manager@alteradevco.co\nm"
+    ],
+    "users_departed": [
+      "ddenieunkerk@alteradevco.com",
+      "demery@alteradevco.com",
+      "kdevinney@alteradevco.com",
+      "kwinant@alteradevco.com",
+      "office.manager@alteradevco.com",
+      "rmartinez@alteradevco.com",
+      "rstark@alteradevco.com"
     ]
   },
   "assets": {
     "events": [
       "4 new workstation(s) were added."
-    ]
+    ],
+    "devices_added": [
+      "SN:5CG302492B",
+      "SN:MXL11947NM",
+      "SN:NAN",
+      "SN:PF5ZJ0EP"
+    ],
+    "devices_retired": []
   },
   "security": {
     "risks": [],

@@ -2,16 +2,35 @@
   "summary_metrics": {
     "total_users": 39,
     "total_assets": 29,
+    "users_joined": 0,
+    "users_departed": 0,
     "user_change": 0,
-    "asset_change": 0
+    "new_devices": 0,
+    "retired_devices": 0,
+    "asset_change": 0,
+    "phishing_failures": 0,
+    "critical_edr_incidents": 0,
+    "executive_summary": "The organization maintained a stable security posture during the reporting period, with no critical incidents and effective control coverage across users and assets."
   },
   "identity_insights": [],
+  "users_joined": [],
+  "users_departed": [],
   "asset_insights": [],
+  "devices_added": [],
+  "devices_retired": [],
   "security_risks": [],
+  "phishing_failed_users": [],
+  "darkweb_exposed_users": [],
+  "devices_without_backup_list": [],
   "positive_findings": [
     "No users failed phishing simulations this period.",
     "All monitored devices have healthy backup status.",
     "No high-severity EDR incidents were detected."
   ],
-  "trend_indicators": []
+  "recommendations": [
+    "Continue regular phishing simulations and security awareness training.",
+    "Ensure backup coverage remains enabled for all endpoints.",
+    "Maintain strict identity lifecycle management processes.",
+    "Continue proactive endpoint monitoring and threat detection."
+  ]
 }

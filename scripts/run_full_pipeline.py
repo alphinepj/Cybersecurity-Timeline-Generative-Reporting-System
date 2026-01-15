@@ -3,7 +3,7 @@ Full Pipeline Runner
 --------------------
 Runs the entire Cybersecurity Reporting System end-to-end.
 
-Phase 1 → Phase 3.5 (PDF Export)
+Phase 1 → Phase 3.5 (PDF Export + Dashboard)
 """
 
 import subprocess
@@ -36,10 +36,6 @@ def run(cmd: list, step: str):
 
 
 def find_file(directory: Path, keywords: list):
-    """
-    Finds the first file whose name contains ALL keywords.
-    Matching is case-insensitive.
-    """
     if not directory.exists():
         return None
 
@@ -63,15 +59,10 @@ def run_pipeline(client: str, month: str):
         sys.exit(f"❌ Raw data directory not found: {raw_dir}")
 
     # -------------------------
-    # Phase 1 — Ingestion & Normalization
+    # Phase 1 — Ingestion
     # -------------------------
     run(
-        [
-            PYTHON,
-            str(SCRIPTS / "run_month.py"),
-            "--month",
-            month,
-        ],
+        [PYTHON, str(SCRIPTS / "run_month.py"), "--month", month],
         "Phase 1: Ingestion & Normalization",
     )
 
@@ -83,84 +74,50 @@ def run_pipeline(client: str, month: str):
     phishing_report = find_file(raw_dir, ["phishing"])
     darkweb_report = find_file(raw_dir, ["dark", "web"])
 
-    missing = []
-    if not edr_report:
-        missing.append("EDR")
-    if not backup_report:
-        missing.append("Backup")
-    if not phishing_report:
-        missing.append("Phishing")
-    if not darkweb_report:
-        missing.append("Dark Web")
+    missing = [
+        name for name, file in {
+            "EDR": edr_report,
+            "Backup": backup_report,
+            "Phishing": phishing_report,
+            "Dark Web": darkweb_report,
+        }.items() if not file
+    ]
 
     if missing:
-        print("\n📂 Files present in raw folder:")
-        for f in raw_dir.iterdir():
-            print(f"   - {f.name}")
-        sys.exit(f"\n❌ Missing required report(s): {', '.join(missing)}")
-
-    print("\n📄 Discovered reports:")
-    print(f"   • EDR     : {edr_report.name}")
-    print(f"   • Backup  : {backup_report.name}")
-    print(f"   • Phishing: {phishing_report.name}")
-    print(f"   • DarkWeb : {darkweb_report.name}")
+        sys.exit(f"❌ Missing required report(s): {', '.join(missing)}")
 
     # -------------------------
     # Phase 2 — Enrichment
     # -------------------------
     run(
-        [
-            PYTHON,
-            str(SCRIPTS / "enrichers/edr_enricher.py"),
-            "--assets",
-            f"data/normalized/{month}-assets.json",
-            "--edr-report",
-            str(edr_report),
-            "--output",
-            f"data/enriched/{month}-assets-edr.json",
-        ],
+        [PYTHON, str(SCRIPTS / "enrichers/edr_enricher.py"),
+         "--assets", f"data/normalized/{month}-assets.json",
+         "--edr-report", str(edr_report),
+         "--output", f"data/enriched/{month}-assets-edr.json"],
         "Phase 2.1: EDR Enrichment",
     )
 
     run(
-        [
-            PYTHON,
-            str(SCRIPTS / "enrichers/backup_enricher.py"),
-            "--assets",
-            f"data/enriched/{month}-assets-edr.json",
-            "--backup-report",
-            str(backup_report),
-            "--output",
-            f"data/enriched/{month}-assets-edr-backup.json",
-        ],
+        [PYTHON, str(SCRIPTS / "enrichers/backup_enricher.py"),
+         "--assets", f"data/enriched/{month}-assets-edr.json",
+         "--backup-report", str(backup_report),
+         "--output", f"data/enriched/{month}-assets-edr-backup.json"],
         "Phase 2.2: Backup Enrichment",
     )
 
     run(
-        [
-            PYTHON,
-            str(SCRIPTS / "enrichers/phishing_enricher.py"),
-            "--users",
-            f"data/normalized/{month}-users.json",
-            "--phishing-report",
-            str(phishing_report),
-            "--output",
-            f"data/enriched/{month}-users-phishing.json",
-        ],
+        [PYTHON, str(SCRIPTS / "enrichers/phishing_enricher.py"),
+         "--users", f"data/normalized/{month}-users.json",
+         "--phishing-report", str(phishing_report),
+         "--output", f"data/enriched/{month}-users-phishing.json"],
         "Phase 2.3: Phishing Enrichment",
     )
 
     run(
-        [
-            PYTHON,
-            str(SCRIPTS / "enrichers/darkweb_enricher.py"),
-            "--users",
-            f"data/enriched/{month}-users-phishing.json",
-            "--darkweb-report",
-            str(darkweb_report),
-            "--output",
-            f"data/enriched/{month}-users-phishing-darkweb.json",
-        ],
+        [PYTHON, str(SCRIPTS / "enrichers/darkweb_enricher.py"),
+         "--users", f"data/enriched/{month}-users-phishing.json",
+         "--darkweb-report", str(darkweb_report),
+         "--output", f"data/enriched/{month}-users-phishing-darkweb.json"],
         "Phase 2.4: Dark Web Enrichment",
     )
 
@@ -168,67 +125,43 @@ def run_pipeline(client: str, month: str):
     # Phase 2.5 — Insight Engine
     # -------------------------
     run(
-        [
-            PYTHON,
-            str(SCRIPTS / "insight_engine.py"),
-            "--users",
-            f"data/enriched/{month}-users-phishing-darkweb.json",
-            "--assets",
-            f"data/enriched/{month}-assets-edr-backup.json",
-            "--diff",
-            f"data/diffs/{month}-diff.json",
-            "--output",
-            f"data/insights/{month}-insights.json",
-        ],
+        [PYTHON, str(SCRIPTS / "insight_engine.py"),
+         "--users", f"data/enriched/{month}-users-phishing-darkweb.json",
+         "--assets", f"data/enriched/{month}-assets-edr-backup.json",
+         "--diff", f"data/diffs/{month}-diff.json",
+         "--output", f"data/insights/{month}-insights.json"],
         "Phase 2.5: Insight Engine",
-    )
-
-    # -------------------------
-    # 🆕 Phase 2.7 — Dashboard Aggregation
-    # -------------------------
-    run(
-        [
-            PYTHON,
-            str(SCRIPTS / "dash_app/dashboard_aggregator.py"),
-            "--client",
-            client,
-            "--month",
-            month,
-            "--insights",
-            f"data/insights/{month}-insights.json",
-            "--output",
-            f"data/dashboard/{month}.json",
-        ],
-        "Phase 2.7: Dashboard Aggregation",
     )
 
     # -------------------------
     # Phase 2.6 — Narrative Builder
     # -------------------------
     run(
-        [
-            PYTHON,
-            str(SCRIPTS / "narrative_builder.py"),
-            "--insights",
-            f"data/insights/{month}-insights.json",
-            "--output",
-            f"data/narratives/{month}-narrative.json",
-        ],
+        [PYTHON, str(SCRIPTS / "narrative_builder.py"),
+         "--insights", f"data/insights/{month}-insights.json",
+         "--output", f"data/narratives/{month}-narrative.json"],
         "Phase 2.6: Narrative Builder",
     )
 
     # -------------------------
-    # Phase 3 — LLM Polishing
+    # Phase 2.7 — Dashboard Aggregation ✅ FIXED
     # -------------------------
     run(
-        [
-            PYTHON,
-            str(SCRIPTS / "llm/report_polisher.py"),
-            "--narrative",
-            f"data/narratives/{month}-narrative.json",
-            "--output",
-            f"reports/{month}/executive_report_polished.md",
-        ],
+        [PYTHON, str(SCRIPTS / "dash_app/dashboard_aggregator.py"),
+         "--client", client,
+         "--month", month,
+         "--insights", f"data/insights/{month}-insights.json",
+         "--output", f"data/dashboard/{month}-dashboard.json"],
+        "Phase 2.7: Dashboard Aggregation",
+    )
+
+    # -------------------------
+    # Phase 3 — LLM Report
+    # -------------------------
+    run(
+        [PYTHON, str(SCRIPTS / "llm/report_polisher.py"),
+         "--narrative", f"data/narratives/{month}-narrative.json",
+         "--output", f"reports/{month}/executive_report_polished.md"],
         "Phase 3: LLM-Polished Executive Report",
     )
 
@@ -236,25 +169,18 @@ def run_pipeline(client: str, month: str):
     # Phase 3.5 — PDF Export
     # -------------------------
     run(
-        [
-            PYTHON,
-            str(SCRIPTS / "exporters/pdf_exporter.py"),
-            "--input",
-            f"reports/{month}/executive_report_polished.md",
-            "--output",
-            f"reports/{month}/executive_report.pdf",
-            "--client",
-            client,
-            "--month",
-            month,
-        ],
+        [PYTHON, str(SCRIPTS / "exporters/pdf_exporter.py"),
+         "--input", f"reports/{month}/executive_report_polished.md",
+         "--output", f"reports/{month}/executive_report.pdf",
+         "--client", client,
+         "--month", month],
         "Phase 3.5: Executive PDF Export",
     )
 
     print("\n✅ FULL PIPELINE COMPLETED SUCCESSFULLY")
     print(f"📄 Markdown Report : reports/{month}/executive_report_polished.md")
     print(f"📄 PDF Report      : reports/{month}/executive_report.pdf")
-    print(f"📊 Dashboard Data  : data/dashboard/{month}.json")
+    print(f"📊 Dashboard Data  : data/dashboard/{month}-dashboard.json")
 
 
 # =====================================================
@@ -264,20 +190,9 @@ def run_pipeline(client: str, month: str):
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="Run full cybersecurity reporting pipeline"
-    )
-    parser.add_argument(
-        "--client",
-        default="Altera Fund Advisors",
-        help="Client name for reporting"
-    )
-    parser.add_argument(
-        "--month",
-        required=True,
-        help="Month in YYYY-MM format"
-    )
+    parser = argparse.ArgumentParser(description="Run full cybersecurity reporting pipeline")
+    parser.add_argument("--client", default="Altera Fund Advisors")
+    parser.add_argument("--month", required=True)
 
     args = parser.parse_args()
-
     run_pipeline(client=args.client, month=args.month)
