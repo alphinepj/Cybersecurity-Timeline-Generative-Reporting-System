@@ -1,7 +1,3 @@
-Here is a **clean, professional, college-friendly `README.md`** you can directly copy and paste into your GitHub repository.
-It is written to suit **project evaluation + developer understanding**.
-
----
 
 # Cybersecurity Timeline & Generative Reporting System
 
