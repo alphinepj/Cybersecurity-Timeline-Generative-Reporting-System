@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "generated_at": "2026-01-14T14:51:08.526884Z",
+    "source": "narrative_builder"
+  },
+  "executive_context": {
+    "baseline_summary": "The organization maintained a stable security posture during the reporting period, with no critical incidents and effective control coverage across users and assets.",
+    "metrics": {
+      "users_joined": 2,
+      "users_departed": 7,
+      "net_user_change": 0,
+      "new_devices": 4,
+      "retired_devices": 0,
+      "backup_coverage_percent": 0,
+      "devices_without_backup": 0,
+      "phishing_failures": 0,
+      "critical_edr_incidents": 0
+    }
+  },
+  "identity_access": {
+    "summary": [
+      "2 new user(s) were onboarded during the period.",
+      "7 user(s) were deprovisioned during the period."
+    ],
+    "users_joined": [
+      "ddenieunkerk@alteradevco.co\nm",
+      "office.manager@alteradevco.co\nm"
+    ],
+    "users_departed": [
+      "ddenieunkerk@alteradevco.com",
+      "demery@alteradevco.com",
+      "kdevinney@alteradevco.com",
+      "kwinant@alteradevco.com",
+      "office.manager@alteradevco.com",
+      "rmartinez@alteradevco.com",
+      "rstark@alteradevco.com"
+    ]
+  },
+  "endpoint_security": {
+    "summary": [
+      "4 new workstation(s) were added."
+    ],
+    "devices_added": [
+      "SN:5CG302492B",
+      "SN:MXL11947NM",
+      "SN:NAN",
+      "SN:PF5ZJ0EP"
+    ],
+    "devices_retired": []
+  },
+  "threat_analysis": {
+    "summary": [],
+    "phishing_failed_users": [],
+    "darkweb_exposed_users": []
+  },
+  "backup_posture": {
+    "devices_without_backup": []
+  },
+  "positive_observations": [
+    "No users failed phishing simulations this period.",
+    "All monitored devices have healthy backup status.",
+    "No high-severity EDR incidents were detected."
+  ],
+  "recommendations": [
+    "Continue regular phishing simulations and security awareness training.",
+    "Ensure backup coverage remains enabled for all endpoints.",
+    "Maintain strict identity lifecycle management processes.",
+    "Continue proactive endpoint monitoring and threat detection."
+  ]
+}

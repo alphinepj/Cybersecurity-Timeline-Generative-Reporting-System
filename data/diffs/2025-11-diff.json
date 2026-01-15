@@ -1,0 +1,204 @@
+{
+  "metadata": {
+    "from_month": "2025-10",
+    "to_month": "2025-11",
+    "generated_at": "2026-01-14T14:51:04.974218Z"
+  },
+  "users": {
+    "new_users": [
+      "ddenieunkerk@alteradevco.co\nm",
+      "office.manager@alteradevco.co\nm"
+    ],
+    "resigned_users": [
+      "ddenieunkerk@alteradevco.com",
+      "demery@alteradevco.com",
+      "kdevinney@alteradevco.com",
+      "kwinant@alteradevco.com",
+      "office.manager@alteradevco.com",
+      "rmartinez@alteradevco.com",
+      "rstark@alteradevco.com"
+    ],
+    "service_changes": {}
+  },
+  "assets": {
+    "new_devices": [
+      "SN:5CG302492B",
+      "SN:MXL11947NM",
+      "SN:NAN",
+      "SN:PF5ZJ0EP"
+    ],
+    "retired_devices": [],
+    "ownership_changes": {}
+  },
+  "metrics": {
+    "user_count_change": -5,
+    "device_count_change": 4
+  },
+  "alerts": [
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F003DS213201J has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F3473R24213MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F3474C24213MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F3478F24213MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F34CVY24513MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F34CY424513MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F36JB624363MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F36KFB24363MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F36KHP24363MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F36KJ924363MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F36KMJ24363MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F36KPM24363MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F37DBM25033MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F3BF8F24373MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:16BMKY3 has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:PF3HYVET has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:PF5ZJ0EP has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:5CG302492B has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F38W3423463BF has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F36KG924363MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F012SR22493BF has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F05XYP22313BF has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:5GZQM53 has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F02TXV22353BF has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F34C3T24403MR has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:MXL11947NM has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F01GWX22273BF has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:NAN has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F013DS22353BF has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:0F009CN214401J has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:5CG13467K9 has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:5CD201BK1Y has no assigned user"
+    },
+    {
+      "type": "orphaned_device",
+      "severity": "high",
+      "message": "Device SN:5CD201BK1F has no assigned user"
+    }
+  ]
+}

@@ -1,0 +1,571 @@
+{
+  "metadata": {
+    "generated_at": "2026-01-14T14:51:04.924725Z",
+    "month": "2025-11",
+    "source": "asset_list",
+    "edr_enriched_at": "2026-01-14T14:51:05.487305Z"
+  },
+  "assets": {
+    "SN:0F003DS213201J": {
+      "device_name": "AFA-LT-0F003DS",
+      "serial_number": "0F003DS213201J",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Pro 8",
+      "os": "Microsoft Windows 11 Pro 10.0.22631",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F3473R24213MR": {
+      "device_name": "AFA-LT-0F3473R2",
+      "serial_number": "0F3473R24213MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.26100",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F3474C24213MR": {
+      "device_name": "AFA-LT-0F3474C2",
+      "serial_number": "0F3474C24213MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.26100",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F3478F24213MR": {
+      "device_name": "AFA-LT-0F3478F2",
+      "serial_number": "0F3478F24213MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.26100",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F34CVY24513MR": {
+      "device_name": "AFA-LT-0F34CVY2",
+      "serial_number": "0F34CVY24513MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.26200",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F34CY424513MR": {
+      "device_name": "AFA-LT-0F34CY42",
+      "serial_number": "0F34CY424513MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.26200",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F36JB624363MR": {
+      "device_name": "AFA-LT-0F36JB62",
+      "serial_number": "0F36JB624363MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.26200",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F36KFB24363MR": {
+      "device_name": "AFA-LT-0F36KFB2",
+      "serial_number": "0F36KFB24363MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.26100",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F36KHP24363MR": {
+      "device_name": "AFA-LT-0F36KHP2",
+      "serial_number": "0F36KHP24363MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.26100",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F36KJ924363MR": {
+      "device_name": "AFA-LT-0F36KJ92",
+      "serial_number": "0F36KJ924363MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.26100",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F36KMJ24363MR": {
+      "device_name": "AFA-LT-0F36KMJ2",
+      "serial_number": "0F36KMJ24363MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.26200",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F36KPM24363MR": {
+      "device_name": "AFA-LT-0F36KPM2",
+      "serial_number": "0F36KPM24363MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.26100",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F37DBM25033MR": {
+      "device_name": "AFA-LT-0F37DBM",
+      "serial_number": "0F37DBM25033MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.26100",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F3BF8F24373MR": {
+      "device_name": "AFA-LT-0F3BF8F2",
+      "serial_number": "0F3BF8F24373MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.26200",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:16BMKY3": {
+      "device_name": "AFA-LT-16BMKY3",
+      "serial_number": "16BMKY3",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Latitude 5540",
+      "os": "Microsoft Windows 11 Pro 10.0.26200",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:PF3HYVET": {
+      "device_name": "AFA-LT-PF3HYVET",
+      "serial_number": "PF3HYVET",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "82BG",
+      "os": "Microsoft Windows 11 Home 10.0.26200",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:PF5ZJ0EP": {
+      "device_name": "AFA-LT-PF5J0EP",
+      "serial_number": "PF5ZJ0EP",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "21MAS1XD00",
+      "os": "Microsoft Windows 11 Pro 10.0.26200",
+      "status": "active",
+      "first_seen": "2025-11",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:5CG302492B": {
+      "device_name": "AFA-LT-WO1052065",
+      "serial_number": "5CG302492B",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "HP EliteBook 840 14 inch G9 Notebook PC",
+      "os": "Microsoft Windows 11 Pro 10.0.26200",
+      "status": "active",
+      "first_seen": "2025-11",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F38W3423463BF": {
+      "device_name": "AFA-SUR-0F38W3",
+      "serial_number": "0F38W3423463BF",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Pro 9",
+      "os": "Microsoft Windows 11 Pro 10.0.26100",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F36KG924363MR": {
+      "device_name": "ALTERA",
+      "serial_number": "0F36KG924363MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.22631",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F012SR22493BF": {
+      "device_name": "ALTERA",
+      "serial_number": "0F012SR22493BF",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Pro 9",
+      "os": "Microsoft Windows 11 Home 10.0.26200",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F05XYP22313BF": {
+      "device_name": "CURLEE",
+      "serial_number": "0F05XYP22313BF",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Pro 9",
+      "os": "Microsoft Windows 11 Home 10.0.26100",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:5GZQM53": {
+      "device_name": "DESKTOP-UVR270R",
+      "serial_number": "5GZQM53",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Latitude 5410",
+      "os": "Microsoft Windows 10 Pro 10.0.19045",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F02TXV22353BF": {
+      "device_name": "EDDIESURFACE9",
+      "serial_number": "0F02TXV22353BF",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Pro 9",
+      "os": "Microsoft Windows 11 Home 10.0.26100",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F34C3T24403MR": {
+      "device_name": "LT-ALT-MR",
+      "serial_number": "0F34C3T24403MR",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Laptop 6 for Business",
+      "os": "Microsoft Windows 11 Pro 10.0.26200",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:MXL11947NM": {
+      "device_name": "MCT-DT-RFK86GK",
+      "serial_number": "MXL11947NM",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "HP ProDesk 400 G7 Small Form Factor PC",
+      "os": "Microsoft Windows 11 Pro 10.0.26100",
+      "status": "active",
+      "first_seen": "2025-11",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F01GWX22273BF": {
+      "device_name": "RIVENBANK",
+      "serial_number": "0F01GWX22273BF",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Pro 9",
+      "os": "Microsoft Windows 11 Home 10.0.26200",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:NAN": {
+      "device_name": "SS-0030591CF773",
+      "serial_number": "NAN",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "nan",
+      "os": "Microsoft Windows 10 Enterprise LTSC 10.0.17763",
+      "status": "active",
+      "first_seen": "2025-11",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F013DS22353BF": {
+      "device_name": "STEPHAN-SURFACE",
+      "serial_number": "0F013DS22353BF",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Pro 9",
+      "os": "Microsoft Windows 11 Pro 10.0.26200",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:0F009CN214401J": {
+      "device_name": "TQ-SURFACE",
+      "serial_number": "0F009CN214401J",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "Surface Pro 8",
+      "os": "Microsoft Windows 11 Home",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:5CG13467K9": {
+      "device_name": "WO183652741",
+      "serial_number": "5CG13467K9",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "HP EliteBook 840 G8 Notebook PC",
+      "os": "Microsoft Windows 11 Pro 10.0.22631",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:5CD201BK1Y": {
+      "device_name": "WO183755927",
+      "serial_number": "5CD201BK1Y",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "HP ProBook 445 G8 Notebook PC",
+      "os": "Microsoft Windows 11 Pro 10.0.22631",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    },
+    "SN:5CD201BK1F": {
+      "device_name": "WO183755930",
+      "serial_number": "5CD201BK1F",
+      "assigned_user": null,
+      "type": "workstation",
+      "model": "HP ProBook 445 G8 Notebook PC",
+      "os": "Microsoft Windows 11 Pro 10.0.22631",
+      "status": "active",
+      "first_seen": "2025-10",
+      "last_seen": "2025-11",
+      "security_state": {
+        "edr_installed": false,
+        "backup_enabled": false,
+        "patched": false,
+        "risk_level": "unknown"
+      }
+    }
+  }
+}

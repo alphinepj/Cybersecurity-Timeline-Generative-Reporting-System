@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "generated_at": "2026-01-14T14:27:54.809281Z",
+    "source": "narrative_builder"
+  },
+  "executive_context": {
+    "baseline_summary": "The organization maintained a stable security posture during the reporting period, with no critical incidents and effective control coverage across users and assets.",
+    "metrics": {
+      "users_joined": 0,
+      "users_departed": 0,
+      "net_user_change": 0,
+      "new_devices": 0,
+      "retired_devices": 0,
+      "backup_coverage_percent": 0,
+      "devices_without_backup": 0,
+      "phishing_failures": 0,
+      "critical_edr_incidents": 0
+    }
+  },
+  "identity_access": {
+    "summary": [],
+    "users_joined": [],
+    "users_departed": []
+  },
+  "endpoint_security": {
+    "summary": [],
+    "devices_added": [],
+    "devices_retired": []
+  },
+  "threat_analysis": {
+    "summary": [],
+    "phishing_failed_users": [],
+    "darkweb_exposed_users": []
+  },
+  "backup_posture": {
+    "devices_without_backup": []
+  },
+  "positive_observations": [
+    "No users failed phishing simulations this period.",
+    "All monitored devices have healthy backup status.",
+    "No high-severity EDR incidents were detected."
+  ],
+  "recommendations": [
+    "Continue regular phishing simulations and security awareness training.",
+    "Ensure backup coverage remains enabled for all endpoints.",
+    "Maintain strict identity lifecycle management processes.",
+    "Continue proactive endpoint monitoring and threat detection."
+  ]
+}
