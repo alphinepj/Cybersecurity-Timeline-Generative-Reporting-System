@@ -62,8 +62,7 @@ The system follows a modular design consisting of the following components:
 1. Clone the repository:
 
    ```bash
-   git clone <  https://github.com/alphinepj/Cybersecurity-Timeline-Generative-Reporting-System<img width="468" height="53" alt="image" src="https://github.com/user-attachments/assets/5eb2d73c-5a35-4062-a770-2426bf193676" />
->
+   git clone < https://github.com/alphinepj/Cybersecurity-Timeline-Generative-Reporting-System >
    ```
 
 2. Navigate to the project directory:
@@ -81,7 +80,8 @@ The system follows a modular design consisting of the following components:
 4. Run the application:
 
    ```bash
-   python app.py
+   python3 scripts/run_full_pipeline.py --month 2025-11
+   python3 scripts/dash_app/app.py
    ```
 
 5. Open the dashboard in your browser:
