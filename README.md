@@ -7,7 +7,6 @@ The **Cybersecurity Timeline & Generative Reporting System** is a data-driven an
 
 This project is currently developed as a **prototype** to demonstrate the feasibility of cybersecurity data analysis and reporting using modern data processing and visualisation techniques.
 
----
 
 ## 🎯 Objectives
 
@@ -16,7 +15,6 @@ This project is currently developed as a **prototype** to demonstrate the feasib
 * To generate automated reports for summarising cybersecurity trends
 * To reduce manual effort in cybersecurity reporting and analysis
 
----
 
 ## 🧩 Features
 
@@ -26,7 +24,6 @@ This project is currently developed as a **prototype** to demonstrate the feasib
 * Automated PDF report generation (prototype level)
 * Modular and extensible system architecture
 
----
 
 ## 🏗️ System Architecture
 
@@ -37,7 +34,6 @@ The system follows a modular design consisting of the following components:
 * **Visualisation Module** – Displays timelines and charts using dashboards
 * **Reporting Module** – Generates automated PDF reports
 
----
 
 ## 🛠️ Technology Stack
 
@@ -51,7 +47,6 @@ The system follows a modular design consisting of the following components:
   * Plotly – Interactive visualisations
   * ReportLab – PDF report generation
 
----
 
 ## ⚙️ Installation & Setup
 
@@ -86,7 +81,6 @@ The system follows a modular design consisting of the following components:
    http://localhost:8050
    ```
 
----
 
 ## 🚧 Current Status
 
@@ -94,7 +88,6 @@ The system follows a modular design consisting of the following components:
 * Sample data can be visualised using timelines and charts
 * Basic report generation is implemented
 
----
 
 ## ⚠️ Known Issues & Limitations
 
@@ -103,7 +96,6 @@ The system follows a modular design consisting of the following components:
 * Certain dashboard buttons and UI components are **not fully functional**
 * The system does **not support real-time data or live monitoring**
 
----
 
 ## 🔮 Future Enhancements
 
@@ -114,7 +106,6 @@ The system follows a modular design consisting of the following components:
 * Implement role-based access control
 * Deploy the system using cloud infrastructure
 
----
 
 ## 👥 Target Users
 
